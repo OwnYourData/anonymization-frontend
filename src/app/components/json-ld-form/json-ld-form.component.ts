@@ -7,7 +7,7 @@ import { AnonymizationService, JsonLdRequest } from '../../services/anonymizatio
 import { ConfigUrlInputComponent } from '../config-url-input/config-url-input.component';
 import { KpiDisplayComponent } from '../kpi-display/kpi-display.component';
 import { MultiKpiData, extractAllKpis, filterDataEntries } from '../../utils/kpi-extractor.util';
-import { splitGraphIntoChunks, mergeTurtleResponses, needsChunking, DEFAULT_CHUNK_SIZE } from '../../utils/ttl-converter.util';
+import { splitGraphBySize, mergeTurtleResponses, needsChunking, DEFAULT_CHUNK_SIZE_BYTES } from '../../utils/ttl-converter.util';
 
 @Component({
   selector: 'app-json-ld-form',
@@ -235,10 +235,10 @@ export class JsonLdFormComponent {
     // Check if we need to chunk the data
     if (needsChunking(jsonLdData)) {
       // Split into chunks and send parallel requests
-      const chunks = splitGraphIntoChunks(jsonLdData, DEFAULT_CHUNK_SIZE);
+      const chunks = splitGraphBySize(jsonLdData, DEFAULT_CHUNK_SIZE_BYTES);
       this.turtleProgress = `Converting ${chunks.length} chunks...`;
 
-      const requests: Observable<string>[] = chunks.map((chunk) =>
+      const requests: Observable<string>[] = chunks.map((chunk: any) =>
         this.http.post(canonicalUrl, chunk, {
           headers: { 'Accept': 'text/turtle', 'Content-Type': 'application/json' },
           responseType: 'text'

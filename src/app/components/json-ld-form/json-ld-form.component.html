@@ -94,6 +94,7 @@
             </span>
           </label>
           <span class="format-label" [class.active]="showingTurtleFormat">TTL</span>
+          <span *ngIf="turtleProgress" class="turtle-progress">{{ turtleProgress }}</span>
         </div>
         <button (click)="downloadResult()" class="download-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"

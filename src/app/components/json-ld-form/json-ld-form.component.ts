@@ -2,10 +2,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { forkJoin, Observable } from 'rxjs';
 import { AnonymizationService, JsonLdRequest } from '../../services/anonymization.service';
 import { ConfigUrlInputComponent } from '../config-url-input/config-url-input.component';
 import { KpiDisplayComponent } from '../kpi-display/kpi-display.component';
 import { MultiKpiData, extractAllKpis, filterDataEntries } from '../../utils/kpi-extractor.util';
+import { splitGraphBySize, mergeTurtleResponses, needsChunking, DEFAULT_CHUNK_SIZE_BYTES } from '../../utils/ttl-converter.util';
 
 @Component({
   selector: 'app-json-ld-form',
@@ -34,6 +36,7 @@ export class JsonLdFormComponent {
   turtleError = '';
   showingTurtleFormat = false;
   isTurtleLoading = false;
+  turtleProgress = '';  // Progress message for batch conversion
 
   selectedExample: any = null;
 
@@ -213,6 +216,7 @@ export class JsonLdFormComponent {
 
     this.isTurtleLoading = true;
     this.turtleError = '';
+    this.turtleProgress = '';
 
     let jsonLdData: any;
     try {
@@ -228,24 +232,52 @@ export class JsonLdFormComponent {
 
     const canonicalUrl = '/soya-api/canonical';
 
-    this.http.post(canonicalUrl, jsonLdData, {
-      headers: { 'Accept': 'text/turtle', 'Content-Type': 'application/json' },
-      responseType: 'text'
-    }).subscribe({
-      next: (response) => {
-        this.turtleResult = response;
-        this.isTurtleLoading = false;
-      },
-      error: (err) => {
-        if (err.status === 413) {
-          this.turtleError = 'The data is too large to convert to Turtle format. Please try with a smaller dataset.';
-        } else {
-          this.turtleError = err.error?.message || err.message || 'Failed to convert to Turtle format';
-        }
-        this.isTurtleLoading = false;
-        this.showingTurtleFormat = false;
-      }
-    });
+    // Check if we need to chunk the data
+    if (needsChunking(jsonLdData)) {
+      // Split into chunks and send parallel requests
+      const chunks = splitGraphBySize(jsonLdData, DEFAULT_CHUNK_SIZE_BYTES);
+      this.turtleProgress = `Converting ${chunks.length} chunks...`;
+
+      const requests: Observable<string>[] = chunks.map((chunk: any) =>
+        this.http.post(canonicalUrl, chunk, {
+          headers: { 'Accept': 'text/turtle', 'Content-Type': 'application/json' },
+          responseType: 'text'
+        })
+      );
+
+      forkJoin(requests).subscribe({
+        next: (responses) => {
+          // Merge all TTL responses
+          this.turtleResult = mergeTurtleResponses(responses);
+          this.turtleProgress = '';
+          this.isTurtleLoading = false;
+        },
+        error: (err) => this.handleTurtleError(err)
+      });
+    } else {
+      // Small dataset - use single request (original behavior)
+      this.http.post(canonicalUrl, jsonLdData, {
+        headers: { 'Accept': 'text/turtle', 'Content-Type': 'application/json' },
+        responseType: 'text'
+      }).subscribe({
+        next: (response) => {
+          this.turtleResult = response;
+          this.isTurtleLoading = false;
+        },
+        error: (err) => this.handleTurtleError(err)
+      });
+    }
+  }
+
+  private handleTurtleError(err: any): void {
+    if (err.status === 413) {
+      this.turtleError = 'The data is too large to convert to Turtle format. Please try with a smaller dataset.';
+    } else {
+      this.turtleError = err.error?.message || err.message || 'Failed to convert to Turtle format';
+    }
+    this.turtleProgress = '';
+    this.isTurtleLoading = false;
+    this.showingTurtleFormat = false;
   }
 
   getDisplayedContent(): string {

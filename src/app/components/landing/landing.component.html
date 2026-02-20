@@ -1,0 +1,230 @@
+<div class="landing-container">
+
+    <!-- Hero -->
+    <section class="hero glass">
+        <div class="hero-content">
+            <h1 class="gradient-text">Anonymize Your Data.<br>Keep Its Value.</h1>
+            <p class="hero-subtitle">
+                Transform sensitive personal information into privacy-safe datasets—without losing the insights that
+                matter.
+                Built on the SOyA framework for semantic, traceable anonymization.
+            </p>
+            <div class="hero-cta">
+                <a href="/" class="btn btn-primary">Try Anonymizer</a>
+                <a href="https://github.com/OwnYourData/Anonymization" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What & Why — woven together -->
+    <section id="what-is" class="narrative glass">
+        <h2>Why Anonymization Matters</h2>
+
+        <p>
+            Every organisation that handles personal data faces a fundamental tension:
+            <strong>how do you share, analyse, and store data without putting individuals at risk?</strong>
+            Names, identification numbers, location data, and even combinations of seemingly harmless attributes
+            can be traced back to real people—exposing them to identity theft, discrimination, or surveillance.
+        </p>
+
+        <p>
+            <strong>Data anonymization</strong> resolves this tension. It is the irreversible process of modifying or
+            removing
+            personal data so completely that no individual can be re-identified—even when the dataset is combined with
+            external information. Unlike pseudonymization (which simply swaps names for codes and can be reversed),
+            true anonymization breaks the link permanently.
+            Once data is genuinely anonymous it falls outside the scope of the
+            <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/introduction-to-anonymisation/"
+                target="_blank" rel="noopener">GDPR</a>
+            entirely—you can share it freely.
+        </p>
+
+        <div class="highlight-strip">
+            <div class="highlight-item">
+                <span class="highlight-icon">🔒</span>
+                <div>
+                    <strong>Anonymization</strong>
+                    <p>Irreversible. No path back to individuals. Data is no longer "personal data" under GDPR.</p>
+                </div>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-icon">🔑</span>
+                <div>
+                    <strong>Pseudonymization</strong>
+                    <p>Reversible. Codes replace identifiers but a key file can restore them. Still governed by GDPR.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            Regulations like the UK GDPR (Recital 26) define anonymous information as data that
+            <em>"does not relate to an identified or identifiable natural person."</em>
+            For organisations, this means anonymization is not just a nice-to-have—it is the most
+            powerful tool for <strong>privacy by design</strong>.
+        </p>
+    </section>
+
+    <!-- Techniques -->
+    <section class="narrative glass">
+        <h2>Common Anonymization Techniques</h2>
+
+        <p>
+            There is no single "anonymize" button. Real-world anonymization combines several
+            <a href="https://rdm.unimi.it/anonymization/" target="_blank" rel="noopener">techniques</a>
+            to balance privacy against data utility:
+        </p>
+
+        <div class="techniques-grid">
+            <div class="technique">
+                <h4>Generalization</h4>
+                <p>Replace precise values with broader categories. <em>Age 27 → 20–30.</em></p>
+            </div>
+            <div class="technique">
+                <h4>Randomization</h4>
+                <p>Inject controlled randomness into data fields to prevent exact-match attacks while preserving
+                    statistical properties.</p>
+            </div>
+            <div class="technique">
+                <h4>Masking</h4>
+                <p>Hide parts of sensitive values by replacing characters with symbols. <em>1010 → 10**.</em></p>
+            </div>
+        </div>
+
+        <p>
+            Formal privacy models quantify how well these techniques work.
+            <a href="https://arx.deidentifier.org/" target="_blank" rel="noopener">Tools like ARX</a>
+            evaluate datasets against standards such as
+            <strong>k-anonymity</strong> (each record is indistinguishable from at least <em>k − 1</em> others),
+            <strong>l-diversity</strong> (sensitive attributes are well-represented within every group), and
+            <strong>t-closeness</strong> (attribute distributions in each group stay close to the overall distribution).
+            These models defend against different
+            <a href="https://mostly.ai/blog/data-anonymization-tools" target="_blank" rel="noopener">attacker
+                scenarios</a>—from
+            targeted re-identification to broad linkage attacks.
+        </p>
+    </section>
+
+    <!-- Example -->
+    <section class="example-section glass">
+        <h2>See It in Action</h2>
+        <p>A hospital shares patient outcome statistics with external analysts. Here is what the raw record looks like,
+            the anonymization configuration, and the resulting output:</p>
+
+        <div class="example-flow">
+            <!-- Top row: Input → Arrow → Output -->
+            <div class="example-io-row">
+                <!-- Input Card -->
+                <div class="example-card">
+                    <div class="example-card-header input-header">
+                        <span class="card-icon">📄</span> Input
+                    </div>
+                    <div class="example-card-body">
+                        <pre class="json-block"><span class="json-brace">&#123;</span>
+  <span class="json-key">"name"</span>: <span class="json-value json-string">"David Miller"</span>,
+  <span class="json-key">"age"</span>: <span class="json-value json-number">34</span>,
+  <span class="json-key">"address"</span>: <span class="json-value json-string">"125 Deep Water Ct,
+            New London, NC 28127"</span>,
+  <span class="json-key">"diagnosis"</span>: <span class="json-value json-string">"Flu"</span>
+<span class="json-brace">&#125;</span></pre>
+                    </div>
+                </div>
+
+                <!-- Center: horizontal arrow + dotted connector down -->
+                <div class="flow-center">
+                    <div class="flow-spacer"></div>
+                    <div class="flow-arrow horizontal-arrow">
+                        <svg width="48" height="24" viewBox="0 0 48 24">
+                            <path d="M0 12h40m0 0l-8-8m8 8l-8 8" stroke="#9333ea" stroke-width="2.5" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="dotted-connector"></div>
+                </div>
+
+                <!-- Output Card -->
+                <div class="example-card">
+                    <div class="example-card-header output-header">
+                        <span class="card-icon">🔒</span> Output
+                    </div>
+                    <div class="example-card-body">
+                        <pre class="json-block"><span class="json-brace">&#123;</span>
+  <span class="json-key">"name"</span>: <span class="json-value redacted">"*****"</span>,  <span class="badge badge-masking sm">masking</span>
+  <span class="json-key">"age"</span>: <span class="json-value json-number">37</span>,  <span class="badge badge-randomization sm">randomization</span>
+  <span class="json-key">"address"</span>: <span class="json-value json-string">"North Carolina"</span>,  <span class="badge badge-generalization sm">generalization</span>
+  <span class="json-key">"diagnosis"</span>: <span class="json-value json-string">"Flu"</span>  <span class="badge badge-unchanged sm">unchanged</span>
+<span class="json-brace">&#125;</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Card (below, centered) -->
+            <div class="example-config-area">
+                <div class="example-card config-card">
+                    <div class="example-card-header config-header">
+                        <span class="card-icon">⚙️</span> Configuration
+                    </div>
+                    <div class="example-card-body">
+                        <pre class="json-block"><span class="json-brace">&#123;</span>
+  <span class="json-key">"name"</span>: <span class="badge badge-masking">"masking"</span>,
+  <span class="json-key">"age"</span>: <span class="badge badge-randomization">"randomization"</span>,
+  <span class="json-key">"address"</span>: <span class="badge badge-generalization">"generalization"</span>
+<span class="json-brace">&#125;</span></pre>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="example-note">
+            The analyst can still study diagnosis trends across age groups and regions—but no individual patient
+            can be singled out, even if the dataset is cross-referenced with public records.
+        </p>
+    </section>
+
+    <!-- How we help -->
+    <section class="narrative glass how-we-help">
+        <h2>How Our Service Helps</h2>
+
+        <p>
+            The <strong>OwnYourData Anonymizer</strong> turns the theory above into a one-click workflow.
+            Upload your dataset in <strong>JSON-LD</strong> or <strong>Flat JSON</strong>, and we handle the rest:
+        </p>
+
+        <ol class="steps-list">
+            <li><strong>Upload</strong> — Paste or load your structured data.</li>
+            <li><strong>Configure</strong> — Choose which attributes to generalize, suppress, or transform.</li>
+            <li><strong>Anonymize</strong> — Our engine applies the SOyA framework: semantic metadata tags every
+                transformation so you can audit exactly what happened and why.</li>
+            <li><strong>Export</strong> — Download your privacy-safe dataset in JSON-LD or TTL, ready for sharing
+                or publication.</li>
+        </ol>
+
+        <p>
+            Because the process is driven by a <strong>semantic ontology</strong>, every decision is
+            transparent and reproducible—not a black box. This makes compliance audits straightforward
+            and builds trust with data partners.
+        </p>
+
+        <div class="hero-cta" style="margin-top: 2rem;">
+            <a href="/" class="btn btn-primary large">Start Anonymizing</a>
+        </div>
+    </section>
+
+    <!-- Further reading -->
+    <section class="further-reading glass">
+        <h3>Further Reading</h3>
+        <ul>
+            <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/introduction-to-anonymisation/"
+                    target="_blank" rel="noopener">ICO — Introduction to Anonymisation</a></li>
+            <li><a href="https://arx.deidentifier.org/" target="_blank" rel="noopener">ARX Data Anonymization Tool</a>
+            </li>
+            <li><a href="https://rdm.unimi.it/anonymization/" target="_blank" rel="noopener">UNIMI — Research Data
+                    Anonymization</a></li>
+            <li><a href="https://mostly.ai/blog/data-anonymization-tools" target="_blank" rel="noopener">MOSTLY AI —
+                    Data Anonymization Tools Compared</a></li>
+        </ul>
+    </section>
+
+</div>

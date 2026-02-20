@@ -1,0 +1,448 @@
+/* ───── Layout ───── */
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 20px;
+    box-shadow: 0 6px 28px rgba(31, 38, 135, 0.08);
+}
+
+/* ───── Hero ───── */
+.hero {
+    padding: 5rem 2.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+}
+
+.gradient-text {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: #475569;
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ───── Narrative sections ───── */
+.narrative,
+.example-section,
+.further-reading {
+    padding: 3rem 2.5rem;
+}
+
+.narrative h2,
+.example-section h2 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 1.25rem;
+}
+
+.narrative p,
+.example-section p {
+    color: #334155;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+}
+
+.narrative a,
+.example-section a,
+.further-reading a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.narrative a:hover,
+.example-section a:hover,
+.further-reading a:hover {
+    border-bottom-color: #2563eb;
+}
+
+/* ───── Highlight strip (anon vs pseudo) ───── */
+.highlight-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.highlight-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.highlight-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.highlight-item p {
+    margin: 0.25rem 0 0;
+    font-size: 0.92rem;
+    color: #64748b;
+}
+
+/* ───── Techniques grid ───── */
+.techniques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.technique {
+    padding: 1.25rem;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.technique h4 {
+    margin: 0 0 0.5rem;
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+.technique p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* ───── Example flow (T-shaped layout) ───── */
+.example-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 2rem 0 1.5rem;
+}
+
+/* ── Config area (below, centered) ── */
+.example-config-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.example-card.config-card {
+    max-width: 300px;
+    width: 100%;
+    flex: 0 0 auto;
+    /* prevent collapse */
+}
+
+/* ── IO row (Input → arrow → Output) ── */
+.example-io-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+/* ── Center column: arrow + dotted line ── */
+.flow-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.flow-spacer {
+    flex: 1;
+}
+
+.dotted-connector {
+    width: 0;
+    flex: 1;
+    border-left: 2.5px dashed #9333ea;
+    opacity: 0.5;
+    min-height: 16px;
+}
+
+.example-card {
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-card-header {
+    padding: 0.65rem 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-header {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.config-header {
+    background: #faf5ff;
+    color: #9333ea;
+}
+
+.output-header {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.card-icon {
+    font-size: 1.1rem;
+}
+
+.example-card-body {
+    padding: 1rem;
+    flex: 1;
+}
+
+/* ── JSON syntax ── */
+.json-block {
+    font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: transparent;
+    color: #334155;
+}
+
+.json-brace {
+    color: #64748b;
+    font-weight: 700;
+}
+
+.json-key {
+    color: #2563eb;
+}
+
+.json-string {
+    color: #16a34a;
+}
+
+.json-number {
+    color: #d97706;
+}
+
+.json-value.redacted {
+    color: #ef4444;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ── Technique badges ── */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+}
+
+.badge.sm {
+    font-size: 0.68rem;
+    padding: 0.1rem 0.45rem;
+    opacity: 0.9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.badge-masking {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.badge-randomization {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.badge-generalization {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.badge-unchanged {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.config-note {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* ── Flow arrows ── */
+.flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0 0.15rem;
+}
+
+
+.example-note {
+    font-size: 0.92rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* ───── Steps list ───── */
+.steps-list {
+    padding-left: 1.5rem;
+    margin: 1rem 0 1.5rem;
+}
+
+.steps-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: #334155;
+}
+
+/* ───── Further Reading ───── */
+.further-reading h3 {
+    font-size: 1.25rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.further-reading ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.further-reading li a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    transition: background 0.2s;
+}
+
+.further-reading li a:hover {
+    background: #dbeafe;
+    border-bottom-color: transparent;
+}
+
+/* ───── Buttons ───── */
+.btn {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary {
+    background: #fff;
+    color: #2563eb;
+    border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+}
+
+.btn.large {
+    font-size: 1.15rem;
+    padding: 1.1rem 2.5rem;
+}
+
+/* ───── Responsive ───── */
+@media (max-width: 768px) {
+    .gradient-text {
+        font-size: 2.25rem;
+    }
+
+    .highlight-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .narrative,
+    .example-section,
+    .further-reading {
+        padding: 2rem 1.5rem;
+    }
+
+    .example-io-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .example-card {
+        min-width: 100%;
+    }
+
+    .horizontal-arrow svg {
+        transform: rotate(90deg);
+    }
+}

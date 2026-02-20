@@ -18,24 +18,7 @@
   </header>
 
   <main class="main-content">
-    <div class="card">
-      <nav class="tabs">
-        <button class="tab-btn" [class.active]="activeTab === 'json-ld'" (click)="setActiveTab('json-ld')">
-          <span class="tab-icon json-ld-icon"></span>
-          JSON-LD
-        </button>
-        <button class="tab-btn" [class.active]="activeTab === 'flat-json'" (click)="setActiveTab('flat-json')">
-          <span class="tab-icon flat-json-icon"></span>
-          Flat JSON
-        </button>
-      </nav>
-
-      <div class="tab-content">
-        <app-json-ld-form *ngIf="activeTab === 'json-ld'"></app-json-ld-form>
-        <app-flat-json-form *ngIf="activeTab === 'flat-json'"></app-flat-json-form>
-      </div>
-    </div>
-    <app-further-info></app-further-info>
+    <router-outlet></router-outlet>
   </main>
 
   <footer class="footer">

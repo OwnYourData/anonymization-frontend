@@ -165,13 +165,12 @@
 
 .submit-btn {
     padding: 0.75rem 1.5rem;
-    background-color: #5cb85c;
-    /* Bootstrap Success Green */
-    border: 1px solid #4cae4c;
-    border-radius: 4px;
-    color: white;
+    background: #2563eb !important;
+    border: 1px solid #1d4ed8;
+    border-radius: 8px;
+    color: #ffffff !important;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
@@ -180,17 +179,15 @@
 }
 
 .submit-btn:hover:not(:disabled) {
-    background-color: #449d44;
-    border-color: #398439;
-    transform: none;
-    /* Remove movement */
-    box-shadow: none;
+    background: #1d4ed8 !important;
+    border-color: #1e40af;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
 }
 
 .submit-btn:disabled {
     opacity: 0.65;
     cursor: not-allowed;
-    background-color: #5cb85c;
+    background: #93c5fd !important;
 }
 
 .loading-spinner {

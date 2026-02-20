@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,4 +8,12 @@ import { CommonModule } from '@angular/common';
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.component.css']
 })
-export class LandingComponent { }
+export class LandingComponent {
+    showStickyCta = false;
+
+    @HostListener('window:scroll')
+    onScroll(): void {
+        // Show sticky CTA after scrolling past ~400px (roughly the hero height)
+        this.showStickyCta = window.scrollY > 400;
+    }
+}

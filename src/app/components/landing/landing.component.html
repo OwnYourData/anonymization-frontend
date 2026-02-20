@@ -1,3 +1,11 @@
+<!-- Sticky CTA bar -->
+<div class="sticky-cta" [class.visible]="showStickyCta">
+    <div class="sticky-cta-inner">
+        <span>Ready to anonymize your data?</span>
+        <a href="/" class="btn btn-primary btn-sm">Try Anonymizer</a>
+    </div>
+</div>
+
 <div class="landing-container">
 
     <!-- Hero -->
@@ -13,6 +21,38 @@
                 <a href="/" class="btn btn-primary">Try Anonymizer</a>
                 <a href="https://github.com/OwnYourData/Anonymization" target="_blank" rel="noopener noreferrer"
                     class="btn btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats strip -->
+    <section class="stats-strip">
+        <div class="stat-item">
+            <span class="stat-icon">🛡️</span>
+            <div class="stat-text">
+                <strong>0 PII</strong>
+                <span>in output</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <span class="stat-icon">📋</span>
+            <div class="stat-text">
+                <strong>100%</strong>
+                <span>Audit Trail</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <span class="stat-icon">🔧</span>
+            <div class="stat-text">
+                <strong>3 Techniques</strong>
+                <span>Available</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <span class="stat-icon">✅</span>
+            <div class="stat-text">
+                <strong>GDPR-Free</strong>
+                <span>Output</span>
             </div>
         </div>
     </section>
@@ -136,7 +176,7 @@
                     <div class="flow-spacer"></div>
                     <div class="flow-arrow horizontal-arrow">
                         <svg width="48" height="24" viewBox="0 0 48 24">
-                            <path d="M0 12h40m0 0l-8-8m8 8l-8 8" stroke="#9333ea" stroke-width="2.5" fill="none"
+                            <path d="M4 12h40m0 0l-8-8m8 8l-8 8" stroke="#9333ea" stroke-width="2.5" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
@@ -181,6 +221,58 @@
             The analyst can still study diagnosis trends across age groups and regions—but no individual patient
             can be singled out, even if the dataset is cross-referenced with public records.
         </p>
+    </section>
+
+    <!-- Use-cases -->
+    <section class="narrative glass">
+        <h2>Who Is This For?</h2>
+        <p>Our anonymizer serves anyone who handles personal data and needs to share, analyse, or publish it safely.</p>
+
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <span class="use-case-icon">🏥</span>
+                <h4>Healthcare</h4>
+                <p>Share patient outcome data with external researchers without exposing individual identities.</p>
+            </div>
+            <div class="use-case-card">
+                <span class="use-case-icon">👥</span>
+                <h4>HR &amp; Recruitment</h4>
+                <p>Anonymize applicant datasets for bias-free analysis and fair hiring practices.</p>
+            </div>
+            <div class="use-case-card">
+                <span class="use-case-icon">🔬</span>
+                <h4>Research</h4>
+                <p>Publish datasets that meet ethics board requirements and open-data mandates.</p>
+            </div>
+            <div class="use-case-card">
+                <span class="use-case-icon">🏦</span>
+                <h4>Finance</h4>
+                <p>Process transaction records for fraud analysis without exposing customer PII.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust signals -->
+    <section class="trust-section">
+        <div class="trust-row">
+            <div class="trust-badge">
+                <span class="trust-icon">🔓</span>
+                <strong>Open Source</strong>
+                <p>Fully open-source. Audit every line of code on
+                    <a href="https://github.com/OwnYourData/Anonymization" target="_blank" rel="noopener">GitHub</a>.
+                </p>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-icon">🧬</span>
+                <strong>SOyA Framework</strong>
+                <p>Semantic, auditable, and reproducible anonymization powered by linked-data standards.</p>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-icon">🇪🇺</span>
+                <strong>GDPR Compliance</strong>
+                <p>Anonymized output is no longer personal data—it falls entirely outside GDPR scope.</p>
+            </div>
+        </div>
     </section>
 
     <!-- How we help -->

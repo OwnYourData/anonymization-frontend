@@ -19,7 +19,7 @@ export interface MultiKpiData {
     attributes: AttributeKpi[];
 }
 
-const KPI_URL_PREFIX = 'http://ns.ownyourdata.eu/ns/soya-context/kpi';
+
 
 /**
  * Extracts the object type from a KPI @id

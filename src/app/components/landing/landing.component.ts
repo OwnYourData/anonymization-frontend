@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,10 +9,27 @@ type Technique = 'masking' | 'generalization' | 'randomization' | 'unchanged';
     standalone: true,
     imports: [CommonModule, FormsModule],
     templateUrl: './landing.component.html',
-    styleUrls: ['./landing.component.css']
+    styleUrls: [
+        './landing-variables.css',
+        './landing-header.css',
+        './landing-buttons.css',
+        './landing-hero.css',
+        './landing-sections.css',
+        './landing-try-it.css',
+        './landing-faq.css',
+        './landing-footer.css',
+        './landing-responsive.css'
+    ]
 })
-export class LandingComponent {
-    showStickyCta = false;
+export class LandingComponent implements OnInit, OnDestroy {
+
+    ngOnInit(): void {
+        document.body.classList.add('dark-landing');
+    }
+
+    ngOnDestroy(): void {
+        document.body.classList.remove('dark-landing');
+    }
 
     // Interactive example — input fields
     inputName = 'David Miller';
@@ -28,17 +45,12 @@ export class LandingComponent {
     // Animation flag
     outputAnimating = false;
 
-    @HostListener('window:scroll')
-    onScroll(): void {
-        this.showStickyCta = window.scrollY > 400;
-    }
-
     // ── Computed anonymized outputs ──
 
     get outputName(): string {
         switch (this.techName) {
             case 'masking':
-                return '*'.repeat(this.inputName.length || 5);
+                return '*****';
             default:
                 return this.inputName;
         }
@@ -66,7 +78,7 @@ export class LandingComponent {
     get outputAddress(): string {
         switch (this.techAddress) {
             case 'masking':
-                return '*'.repeat(Math.min(this.inputAddress.length, 20));
+                return '*****';
             case 'generalization':
                 return this.extractState(this.inputAddress);
             default:

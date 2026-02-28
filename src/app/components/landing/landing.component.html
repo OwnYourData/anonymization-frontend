@@ -1,153 +1,100 @@
-<!-- Sticky CTA bar -->
-<div class="sticky-cta" [class.visible]="showStickyCta">
-    <div class="sticky-cta-inner">
-        <span>Ready to anonymize your data?</span>
-        <a href="/" class="btn btn-primary btn-sm">Try Anonymizer</a>
+<!-- Header (matching colleague's design) -->
+<header class="landing-header">
+    <div class="container">
+        <div class="header-inner">
+            <span class="brand">
+                <img class="logo-img" src="assets/images/oyd.png" alt="OwnYourData">
+                <div>
+                    <strong>OwnYourData Anonymiser</strong>
+                    <span>Configurable anonymisation for JSON / JSON-LD</span>
+                </div>
+            </span>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <a class="btn btn-ghost" href="#faq">FAQ</a>
+                <a class="btn btn-primary" href="/">
+                    Try it now →
+                </a>
+            </div>
+        </div>
     </div>
-</div>
+</header>
 
-<div class="landing-container">
+<div class="landing-page">
 
     <!-- Hero -->
-    <section class="hero glass">
-        <div class="hero-content">
-            <h1 class="gradient-text">Anonymize Your Data.<br>Keep Its Value.</h1>
-            <p class="hero-subtitle">
-                Transform sensitive personal information into privacy-safe datasets—without losing the insights that
-                matter.
-                Built on the SOyA framework for semantic, traceable anonymization.
-            </p>
-            <div class="hero-cta">
-                <a href="/" class="btn btn-primary">Try Anonymizer</a>
-                <a href="https://github.com/OwnYourData/Anonymization" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-secondary">How It Works</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats strip -->
-    <section class="stats-strip">
-        <div class="stat-item">
-            <span class="stat-icon">🛡️</span>
-            <div class="stat-text">
-                <strong>0 PII</strong>
-                <span>in output</span>
-            </div>
-        </div>
-        <div class="stat-item">
-            <span class="stat-icon">📋</span>
-            <div class="stat-text">
-                <strong>100%</strong>
-                <span>Audit Trail</span>
-            </div>
-        </div>
-        <div class="stat-item">
-            <span class="stat-icon">🔧</span>
-            <div class="stat-text">
-                <strong>3 Techniques</strong>
-                <span>Available</span>
-            </div>
-        </div>
-        <div class="stat-item">
-            <span class="stat-icon">✅</span>
-            <div class="stat-text">
-                <strong>GDPR-Free</strong>
-                <span>Output</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- What & Why — woven together -->
-    <section id="what-is" class="narrative glass">
-        <h2>Why Anonymization Matters</h2>
-
-        <p>
-            Every organisation that handles personal data faces a fundamental tension:
-            <strong>how do you share, analyse, and store data without putting individuals at risk?</strong>
-            Names, identification numbers, location data, and even combinations of seemingly harmless attributes
-            can be traced back to real people—exposing them to identity theft, discrimination, or surveillance.
-        </p>
-
-        <p>
-            <strong>Data anonymization</strong> resolves this tension. It is the irreversible process of modifying or
-            removing
-            personal data so completely that no individual can be re-identified—even when the dataset is combined with
-            external information. Unlike pseudonymization (which simply swaps names for codes and can be reversed),
-            true anonymization breaks the link permanently.
-            Once data is genuinely anonymous it falls outside the scope of the
-            <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/introduction-to-anonymisation/"
-                target="_blank" rel="noopener">GDPR</a>
-            entirely—you can share it freely.
-        </p>
-
-        <div class="highlight-strip">
-            <div class="highlight-item">
-                <span class="highlight-icon">🔒</span>
-                <div>
-                    <strong>Anonymization</strong>
-                    <p>Irreversible. No path back to individuals. Data is no longer "personal data" under GDPR.</p>
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="badges" aria-label="Highlights">
+                    <div class="badge"><span class="dot ok"></span> Privacy-by-design</div>
+                    <div class="badge"><span class="dot cta"></span> JSON &amp; JSON-LD</div>
+                    <div class="badge"><span class="dot warn"></span> Configurable rules</div>
                 </div>
+
+                <h1>Anonymise data before you share it — fast, configurable, and auditable.</h1>
+                <p class="lead">
+                    The OwnYourData Anonymiser helps you reduce privacy risk when sharing data for
+                    <b>analytics</b>, <b>research</b>, or <b>AI/ML</b>.
+                    Apply attribute-level transformations such as <b>masking</b>, <b>generalisation</b>, and
+                    <b>randomisation</b>
+                    — while keeping your JSON / JSON-LD structure intact.
+                </p>
+
+                <div class="cta-row" aria-label="Primary actions">
+                    <a class="btn btn-primary" href="/">
+                        Start anonymising →
+                    </a>
+                    <a class="btn" href="#how">How it works</a>
+                    <a class="btn" href="https://github.com/OwnYourData/anonymisation-service" target="_blank"
+                        rel="noopener">View on GitHub</a>
+                </div>
+
+                <p class="micro">
+                    Please use <b>synthetic</b> or <b>non-sensitive</b> sample data for testing.
+                </p>
             </div>
-            <div class="highlight-item">
-                <span class="highlight-icon">🔑</span>
-                <div>
-                    <strong>Pseudonymization</strong>
-                    <p>Reversible. Codes replace identifiers but a key file can restore them. Still governed by GDPR.
-                    </p>
+
+            <!-- Hero Visual: JSON Before/After -->
+            <div class="hero-visual">
+                <div class="hero-code-card">
+                    <div class="hero-code-header">
+                        <span class="hero-code-dot red"></span>
+                        <span class="hero-code-dot yellow"></span>
+                        <span class="hero-code-dot green"></span>
+                        <span class="hero-code-title">patient_record.json</span>
+                    </div>
+                    <div class="hero-code-body">
+                        <div class="hero-code-label before-label">Before</div>
+                        <pre class="hero-json"><span class="json-brace">&#123;</span>
+  <span class="json-k">"name"</span>:      <span class="json-v-sensitive">"Alice Martin"</span>,
+  <span class="json-k">"age"</span>:       <span class="json-v-sensitive">29</span>,
+  <span class="json-k">"address"</span>:   <span class="json-v-sensitive">"42 Oak St, Vienna"</span>,
+  <span class="json-k">"diagnosis"</span>: <span class="json-v">"Migraine"</span>
+<span class="json-brace">&#125;</span></pre>
+
+                        <div class="hero-transform-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="#9333ea" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="hero-transform-label">anonymise</span>
+                        </div>
+
+                        <div class="hero-code-label after-label">After</div>
+                        <pre class="hero-json"><span class="json-brace">&#123;</span>
+  <span class="json-k">"name"</span>:      <span class="json-v-masked">"*****"</span>,
+  <span class="json-k">"age"</span>:       <span class="json-v-general">"20–30"</span>,
+  <span class="json-k">"address"</span>:   <span class="json-v-general">"Vienna"</span>,
+  <span class="json-k">"diagnosis"</span>: <span class="json-v">"Migraine"</span>
+<span class="json-brace">&#125;</span></pre>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <p>
-            Regulations like the UK GDPR (Recital 26) define anonymous information as data that
-            <em>"does not relate to an identified or identifiable natural person."</em>
-            For organisations, this means anonymization is not just a nice-to-have—it is the most
-            powerful tool for <strong>privacy by design</strong>.
-        </p>
-    </section>
-
-    <!-- Techniques -->
-    <section class="narrative glass">
-        <h2>Common Anonymization Techniques</h2>
-
-        <p>
-            There is no single "anonymize" button. Real-world anonymization combines several
-            <a href="https://rdm.unimi.it/anonymization/" target="_blank" rel="noopener">techniques</a>
-            to balance privacy against data utility:
-        </p>
-
-        <div class="techniques-grid">
-            <div class="technique">
-                <h4>Generalization</h4>
-                <p>Replace precise values with broader categories. <em>Age 27 → 20–30.</em></p>
-            </div>
-            <div class="technique">
-                <h4>Randomization</h4>
-                <p>Inject controlled randomness into data fields to prevent exact-match attacks while preserving
-                    statistical properties.</p>
-            </div>
-            <div class="technique">
-                <h4>Masking</h4>
-                <p>Hide parts of sensitive values by replacing characters with symbols. <em>1010 → 10**.</em></p>
-            </div>
-        </div>
-
-        <p>
-            Formal privacy models quantify how well these techniques work.
-            <a href="https://arx.deidentifier.org/" target="_blank" rel="noopener">Tools like ARX</a>
-            evaluate datasets against standards such as
-            <strong>k-anonymity</strong> (each record is indistinguishable from at least <em>k − 1</em> others),
-            <strong>l-diversity</strong> (sensitive attributes are well-represented within every group), and
-            <strong>t-closeness</strong> (attribute distributions in each group stay close to the overall distribution).
-            These models defend against different
-            <a href="https://mostly.ai/blog/data-anonymization-tools" target="_blank" rel="noopener">attacker
-                scenarios</a>—from
-            targeted re-identification to broad linkage attacks.
-        </p>
     </section>
 
     <!-- Interactive Example -->
-    <section class="example-section glass" id="try-it">
+    <section class="example-section" id="try-it">
         <h2>Try It Yourself</h2>
         <p>Edit the fields below, pick an anonymization technique for each, and watch the output
             update in real time — all running locally in your browser.</p>
@@ -216,26 +163,26 @@
                         <span class="output-value" [class.redacted]="techName === 'masking'">
                             "{{ outputName }}"
                         </span>
-                        <span class="badge sm" [ngClass]="'badge-' + techName">{{ techName }}</span>
+                        <span class="badge-tech sm" [ngClass]="'badge-' + techName">{{ techName }}</span>
                     </div>
                     <div class="try-it-output-row">
                         <span class="json-key">"age"</span>:
                         <span class="output-value">
                             {{ outputAge }}
                         </span>
-                        <span class="badge sm" [ngClass]="'badge-' + techAge">{{ techAge }}</span>
+                        <span class="badge-tech sm" [ngClass]="'badge-' + techAge">{{ techAge }}</span>
                     </div>
                     <div class="try-it-output-row">
                         <span class="json-key">"address"</span>:
                         <span class="output-value" [class.redacted]="techAddress === 'masking'">
                             "{{ outputAddress }}"
                         </span>
-                        <span class="badge sm" [ngClass]="'badge-' + techAddress">{{ techAddress }}</span>
+                        <span class="badge-tech sm" [ngClass]="'badge-' + techAddress">{{ techAddress }}</span>
                     </div>
                     <div class="try-it-output-row">
                         <span class="json-key">"diagnosis"</span>:
                         <span class="output-value">"{{ outputDiagnosis }}"</span>
-                        <span class="badge sm badge-unchanged">unchanged</span>
+                        <span class="badge-tech sm badge-unchanged">unchanged</span>
                     </div>
                 </div>
             </div>
@@ -247,8 +194,47 @@
         </p>
     </section>
 
-    <!-- Use-cases -->
-    <section class="narrative glass">
+    <!-- Designed for practical data sharing -->
+    <section class="section">
+        <h2>Designed for practical data sharing</h2>
+        <p>Use the Anonymiser when you need to share datasets but want to minimise exposure of personal or sensitive
+            attributes. It's especially useful when your payloads are
+            <b>structured</b> (JSON) or <b>semantically modelled</b> (JSON-LD).
+        </p>
+
+        <div class="grid3">
+            <div class="feature">
+                <h3>Reduce re-identification risk</h3>
+                <p>Transform direct identifiers and quasi-identifiers with configurable operators.</p>
+                <div class="tagrow">
+                    <span class="tag">mask</span>
+                    <span class="tag">generalise</span>
+                    <span class="tag">randomise</span>
+                </div>
+            </div>
+            <div class="feature">
+                <h3>Keep utility for analytics / ML</h3>
+                <p>Preserve structure and meaning where possible while removing sensitive detail.</p>
+                <div class="tagrow">
+                    <span class="tag">data utility</span>
+                    <span class="tag">structure preserved</span>
+                    <span class="tag">repeatable</span>
+                </div>
+            </div>
+            <div class="feature">
+                <h3>Fit into governance workflows</h3>
+                <p>Explicit configuration supports review, iteration, and documentation of transformations.</p>
+                <div class="tagrow">
+                    <span class="tag">policy-friendly</span>
+                    <span class="tag">auditable</span>
+                    <span class="tag">iterative</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use-cases (kept from current page — restyled dark) -->
+    <section class="section">
         <h2>Who Is This For?</h2>
         <p>Our anonymizer serves anyone who handles personal data and needs to share, analyse, or publish it safely.</p>
 
@@ -257,11 +243,6 @@
                 <span class="use-case-icon">🏥</span>
                 <h4>Healthcare</h4>
                 <p>Share patient outcome data with external researchers without exposing individual identities.</p>
-            </div>
-            <div class="use-case-card">
-                <span class="use-case-icon">👥</span>
-                <h4>HR &amp; Recruitment</h4>
-                <p>Anonymize applicant datasets for bias-free analysis and fair hiring practices.</p>
             </div>
             <div class="use-case-card">
                 <span class="use-case-icon">🔬</span>
@@ -273,74 +254,160 @@
                 <h4>Finance</h4>
                 <p>Process transaction records for fraud analysis without exposing customer PII.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Trust signals -->
-    <section class="trust-section">
-        <div class="trust-row">
-            <div class="trust-badge">
-                <span class="trust-icon">🔓</span>
-                <strong>Open Source</strong>
-                <p>Fully open-source. Audit every line of code on
-                    <a href="https://github.com/OwnYourData/Anonymization" target="_blank" rel="noopener">GitHub</a>.
-                </p>
-            </div>
-            <div class="trust-badge">
-                <span class="trust-icon">🧬</span>
-                <strong>SOyA Framework</strong>
-                <p>Semantic, auditable, and reproducible anonymization powered by linked-data standards.</p>
-            </div>
-            <div class="trust-badge">
-                <span class="trust-icon">🇪🇺</span>
-                <strong>GDPR Compliance</strong>
-                <p>Anonymized output is no longer personal data—it falls entirely outside GDPR scope.</p>
+            <div class="use-case-card">
+                <span class="use-case-icon">🔐</span>
+                <h4>Your Use Case</h4>
+                <p>Any domain that handles personal data can benefit—education, logistics, government, IoT, and beyond.
+                    If you collect it, you can anonymize it.</p>
             </div>
         </div>
     </section>
 
-    <!-- How we help -->
-    <section class="narrative glass how-we-help">
-        <h2>How Our Service Helps</h2>
+    <!-- How it works -->
+    <section class="section anchor" id="how">
+        <h2>How it works</h2>
+        <p>The service follows a <b>configuration-driven</b> approach: you define how each attribute should be treated
+            (based on datatype and your data model). The anonymisation pipeline then applies the selected operators
+            consistently.</p>
 
-        <p>
-            The <strong>OwnYourData Anonymizer</strong> turns the theory above into a one-click workflow.
-            Upload your dataset in <strong>JSON-LD</strong> or <strong>Flat JSON</strong>, and we handle the rest:
-        </p>
+        <div class="steps">
+            <div class="step">
+                <div class="n">1</div>
+                <h3>Provide sample data</h3>
+                <p>Start with non-sensitive test data in JSON or JSON-LD.</p>
+            </div>
+            <div class="step">
+                <div class="n">2</div>
+                <h3>Select / provide configuration</h3>
+                <p>Define attribute types and allowed transformations (e.g., for identifiers vs. measures).</p>
+            </div>
+            <div class="step">
+                <div class="n">3</div>
+                <h3>Run anonymisation</h3>
+                <p>The pipeline applies masking/generalisation/randomisation according to your config.</p>
+            </div>
+            <div class="step">
+                <div class="n">4</div>
+                <h3>Review output</h3>
+                <p>Check privacy and utility, then iterate on configuration and operators.</p>
+            </div>
+        </div>
 
-        <ol class="steps-list">
-            <li><strong>Upload</strong> — Paste or load your structured data.</li>
-            <li><strong>Configure</strong> — Choose which attributes to generalize, suppress, or transform.</li>
-            <li><strong>Anonymize</strong> — Our engine applies the SOyA framework: semantic metadata tags every
-                transformation so you can audit exactly what happened and why.</li>
-            <li><strong>Export</strong> — Download your privacy-safe dataset in JSON-LD or TTL, ready for sharing
-                or publication.</li>
-        </ol>
-
-        <p>
-            Because the process is driven by a <strong>semantic ontology</strong>, every decision is
-            transparent and reproducible—not a black box. This makes compliance audits straightforward
-            and builds trust with data partners.
-        </p>
-
-        <div class="hero-cta" style="margin-top: 2rem;">
-            <a href="/" class="btn btn-primary large">Start Anonymizing</a>
+        <div class="final-cta" style="margin-top: 24px;">
+            <div>
+                <h3>Try it in 2 minutes</h3>
+                <p>Open the app, paste the sample JSON, anonymise it, and tell us what's missing (operators, defaults,
+                    UX, validation, risk hints, JSON-LD handling, export formats).</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="/">
+                    Start anonymising →
+                </a>
+                <a class="btn" href="https://github.com/OwnYourData/anonymisation-service/issues" target="_blank"
+                    rel="noopener">Browse issues</a>
+            </div>
         </div>
     </section>
 
-    <!-- Further reading -->
-    <section class="further-reading glass">
-        <h3>Further Reading</h3>
-        <ul>
-            <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/anonymisation/introduction-to-anonymisation/"
-                    target="_blank" rel="noopener">ICO — Introduction to Anonymisation</a></li>
-            <li><a href="https://arx.deidentifier.org/" target="_blank" rel="noopener">ARX Data Anonymization Tool</a>
-            </li>
-            <li><a href="https://rdm.unimi.it/anonymization/" target="_blank" rel="noopener">UNIMI — Research Data
-                    Anonymization</a></li>
-            <li><a href="https://mostly.ai/blog/data-anonymization-tools" target="_blank" rel="noopener">MOSTLY AI —
-                    Data Anonymization Tools Compared</a></li>
-        </ul>
+    <!-- FAQ -->
+    <section class="section anchor" id="faq">
+        <h2>FAQ</h2>
+        <div class="faq">
+            <details>
+                <summary>Is the output truly "anonymous"?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    It depends on your data and configuration. The tool applies the transformations you choose, but
+                    true anonymity also depends on context, dataset size, and external data availability.
+                    Always review output critically and consider using a
+                    <a href="https://github.com/OwnYourData/anonymisation-service/issues/new/choose" target="_blank"
+                        rel="noopener">new issue template</a>
+                    to report edge cases.
+                </div>
+            </details>
+            <details>
+                <summary>What formats are supported?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    JSON and JSON-LD. The pipeline preserves your document structure while transforming the values
+                    you specify. Support for additional formats is on the roadmap.
+                </div>
+            </details>
+            <details>
+                <summary>How do I provide good feedback?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    A short, concrete repro — your sample input, the configuration you used, and what you expected
+                    vs. what you got — is the most helpful. Open an issue on
+                    <a href="https://github.com/OwnYourData/anonymisation-service" target="_blank"
+                        rel="noopener">github.com/OwnYourData/anonymisation-service</a>.
+                </div>
+            </details>
+            <details>
+                <summary>Can I run this in my own environment?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    Yes. The project is open source. Clone the repo and follow the setup instructions in the README.
+                    You can host the service wherever you need it.
+                </div>
+            </details>
+            <details>
+                <summary>What data should I avoid uploading?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    Never upload real personal data during testing. Always use synthetic or non-sensitive samples.
+                    Effective anonymisation is context-dependent; treat output as <em>risk-reduced</em> rather than
+                    "guaranteed anonymous."
+                </div>
+            </details>
+        </div>
     </section>
+
+    <!-- Final CTA -->
+    <section class="section">
+        <div class="final-cta">
+            <div>
+                <h3>Help us improve the Anonymiser</h3>
+                <p>Your real-world feedback guides what we build next. If you try one dataset + configuration and report
+                    what worked (or broke), you'll directly influence the roadmap.</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="/">
+                    Try it now →
+                </a>
+                <a class="btn" href="https://github.com/OwnYourData/anonymisation-service/issues/new/choose"
+                    target="_blank" rel="noopener">Send feedback</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="hr"></div>
+        <div class="footgrid">
+            <div>
+                <p><b>OwnYourData</b> — Privacy-preserving data transformation</p>
+                <p>Disclaimer: This page provides product information and is not legal advice. Use synthetic data for
+                    testing and treat anonymisation as a risk-management process.</p>
+            </div>
+            <div>
+                <p><b>Links</b></p>
+                <div class="footlinks">
+                    <a href="/" rel="noopener">Open app</a>
+                    <a href="https://github.com/OwnYourData/anonymisation-service" target="_blank"
+                        rel="noopener">GitHub</a>
+                    <a href="https://github.com/OwnYourData/anonymisation-service/issues" target="_blank"
+                        rel="noopener">Issues</a>
+                    <a href="https://github.com/OwnYourData/anonymisation-service/issues/new/choose" target="_blank"
+                        rel="noopener">New feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </div>

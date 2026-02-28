@@ -82,3 +82,56 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* ── Dark theme overrides for landing page ── */
+body.dark-landing {
+    background: linear-gradient(180deg, #070a12 0%, #0b1020 55%, #070a12 100%);
+    background-color: #070a12;
+    color: rgba(255, 255, 255, .92);
+}
+
+body.dark-landing::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    background:
+        radial-gradient(900px 650px at 12% 18%, rgba(124, 77, 255, .28), transparent 62%),
+        radial-gradient(850px 600px at 88% 12%, rgba(41, 211, 255, .22), transparent 60%),
+        radial-gradient(900px 700px at 50% 110%, rgba(61, 220, 151, .12), transparent 60%),
+        radial-gradient(700px 500px at 50% 45%, rgba(255, 255, 255, .04), transparent 70%);
+    pointer-events: none;
+    transform: translateZ(0);
+}
+
+body.dark-landing ::-webkit-scrollbar-track {
+    background: #0b1020;
+}
+
+body.dark-landing ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+body.dark-landing ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+body.dark-landing .app-container {
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+body.dark-landing .header {
+    display: none;
+}
+
+body.dark-landing .footer {
+    display: none;
+}
+
+body.dark-landing .main-content {
+    max-width: 100%;
+    padding: 0;
+    align-items: stretch;
+}

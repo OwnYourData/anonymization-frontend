@@ -1,0 +1,82 @@
+/* ───── FAQ accordion ───── */
+.faq {
+    background: linear-gradient(180deg, rgba(16, 23, 42, .96), rgba(14, 21, 38, .96));
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: var(--radius2);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
+}
+
+details {
+    border-top: 1px solid rgba(255, 255, 255, .10);
+    padding: 14px 16px;
+}
+
+details:first-child {
+    border-top: none;
+}
+
+summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 800;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .90);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.chevron {
+    transition: transform 0.2s ease;
+    font-size: 14px;
+    color: var(--muted2);
+}
+
+details[open] .chevron {
+    transform: rotate(90deg);
+}
+
+.ans {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 92ch;
+    line-height: 1.6;
+}
+
+.ans a {
+    color: rgba(41, 211, 255, .95);
+}
+
+/* ───── Final CTA card ───── */
+.final-cta {
+    padding: 22px;
+    border-radius: var(--radius2);
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: linear-gradient(180deg, rgba(16, 23, 42, .96), rgba(14, 21, 38, .96));
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.final-cta h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.final-cta p {
+    margin: 6px 0 0;
+    color: var(--muted2);
+    font-size: 13px;
+    max-width: 84ch;
+}

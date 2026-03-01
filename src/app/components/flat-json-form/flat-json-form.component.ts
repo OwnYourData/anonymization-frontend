@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -12,10 +12,9 @@ import { MultiKpiData, extractAllFlatJsonKpis, filterFlatJsonData } from '../../
   standalone: true,
   imports: [CommonModule, FormsModule, ConfigUrlInputComponent, KpiDisplayComponent],
   templateUrl: './flat-json-form.component.html',
-  styleUrls: ['./flat-json-form.component.css']
+  styleUrls: ['../shared-form.css', './flat-json-form.component.css']
 })
 export class FlatJsonFormComponent {
-  @Output() resultChange = new EventEmitter<string>();
 
   configurationUrl = '';
   prefix = '';
@@ -169,7 +168,6 @@ export class FlatJsonFormComponent {
         // Filter and display only the data portion for the result output
         const dataOnly = filterFlatJsonData(response);
         this.result = JSON.stringify(dataOnly, null, 2);
-        this.resultChange.emit(this.result);
         this.isLoading = false;
       },
       error: (err) => {

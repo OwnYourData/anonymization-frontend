@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -14,10 +14,9 @@ import { splitGraphBySize, mergeTurtleResponses, needsChunking, DEFAULT_CHUNK_SI
   standalone: true,
   imports: [CommonModule, FormsModule, ConfigUrlInputComponent, KpiDisplayComponent],
   templateUrl: './json-ld-form.component.html',
-  styleUrls: ['./json-ld-form.component.css']
+  styleUrls: ['../shared-form.css', './json-ld-form.component.css']
 })
 export class JsonLdFormComponent {
-  @Output() resultChange = new EventEmitter<string>();
 
   configurationUrl = '';
   jsonData = '';
@@ -171,7 +170,6 @@ export class JsonLdFormComponent {
 
         // Store full response for display and download
         this.result = JSON.stringify(response, null, 2);
-        this.resultChange.emit(this.result);
         this.isLoading = false;
       },
       error: (err) => {

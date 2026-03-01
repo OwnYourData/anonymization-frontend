@@ -46,10 +46,6 @@
     font-weight: 400;
 }
 
-.subtitle {
-    display: none;
-    /* Hiding subtitle for cleaner look, or can be kept if preferred */
-}
 
 /* OwnYourData Button */
 .oyd-link {
@@ -89,68 +85,7 @@
     align-items: flex-start;
 }
 
-.card {
-    width: 100%;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    overflow: visible;
-}
 
-.tabs {
-    display: flex;
-    background: transparent;
-    padding: 0;
-    gap: 2rem;
-    border-bottom: 1px solid #dee2e6;
-    margin-bottom: 2rem;
-    width: 100%;
-}
-
-.tab-btn {
-    padding: 0.75rem 0.5rem;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    color: #777777;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border-radius: 0;
-    /* Clear previous radius */
-}
-
-.tab-btn:hover {
-    color: #333333;
-    background: transparent;
-}
-
-.tab-btn.active {
-    color: #333333;
-    border-bottom-color: #337ab7;
-    /* Standard academic blue for selection */
-    background: transparent;
-    box-shadow: none;
-}
-
-/* Remove gradient active states */
-.tab-btn:first-child.active,
-.tab-btn:last-child.active {
-    background: transparent;
-}
-
-.tab-icon {
-    display: none;
-    /* Hide icons for cleaner text-only tabs */
-}
-
-.tab-content {
-    padding: 0;
-    width: 100%;
-}
 
 .footer {
     padding: 2rem 1.5rem;

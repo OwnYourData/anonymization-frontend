@@ -1,0 +1,413 @@
+<!-- Header (matching colleague's design) -->
+<header class="landing-header">
+    <div class="container">
+        <div class="header-inner">
+            <span class="brand">
+                <img class="logo-img" src="assets/images/oyd.png" alt="OwnYourData">
+                <div>
+                    <strong>OwnYourData Anonymiser</strong>
+                    <span>Configurable anonymisation for JSON / JSON-LD</span>
+                </div>
+            </span>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <a class="btn btn-ghost" href="#faq">FAQ</a>
+                <a class="btn btn-primary" href="/">
+                    Try it now →
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="landing-page">
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="badges" aria-label="Highlights">
+                    <div class="badge"><span class="dot ok"></span> Privacy-by-design</div>
+                    <div class="badge"><span class="dot cta"></span> JSON &amp; JSON-LD</div>
+                    <div class="badge"><span class="dot warn"></span> Configurable rules</div>
+                </div>
+
+                <h1>Anonymise data before you share it — fast, configurable, and auditable.</h1>
+                <p class="lead">
+                    The OwnYourData Anonymiser helps you reduce privacy risk when sharing data for
+                    <b>analytics</b>, <b>research</b>, or <b>AI/ML</b>.
+                    Apply attribute-level transformations such as <b>masking</b>, <b>generalisation</b>, and
+                    <b>randomisation</b>
+                    — while keeping your JSON / JSON-LD structure intact.
+                </p>
+
+                <div class="cta-row" aria-label="Primary actions">
+                    <a class="btn btn-primary" href="/">
+                        Start anonymising →
+                    </a>
+                    <a class="btn" href="#how">How it works</a>
+                    <a class="btn" href="https://github.com/OwnYourData/anonymisation-service" target="_blank"
+                        rel="noopener">View on GitHub</a>
+                </div>
+
+                <p class="micro">
+                    Please use <b>synthetic</b> or <b>non-sensitive</b> sample data for testing.
+                </p>
+            </div>
+
+            <!-- Hero Visual: JSON Before/After -->
+            <div class="hero-visual">
+                <div class="hero-code-card">
+                    <div class="hero-code-header">
+                        <span class="hero-code-dot red"></span>
+                        <span class="hero-code-dot yellow"></span>
+                        <span class="hero-code-dot green"></span>
+                        <span class="hero-code-title">patient_record.json</span>
+                    </div>
+                    <div class="hero-code-body">
+                        <div class="hero-code-label before-label">Before</div>
+                        <pre class="hero-json"><span class="json-brace">&#123;</span>
+  <span class="json-k">"name"</span>:      <span class="json-v-sensitive">"Alice Martin"</span>,
+  <span class="json-k">"age"</span>:       <span class="json-v-sensitive">29</span>,
+  <span class="json-k">"address"</span>:   <span class="json-v-sensitive">"42 Oak St, Vienna"</span>,
+  <span class="json-k">"diagnosis"</span>: <span class="json-v">"Migraine"</span>
+<span class="json-brace">&#125;</span></pre>
+
+                        <div class="hero-transform-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="#9333ea" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="hero-transform-label">anonymise</span>
+                        </div>
+
+                        <div class="hero-code-label after-label">After</div>
+                        <pre class="hero-json"><span class="json-brace">&#123;</span>
+  <span class="json-k">"name"</span>:      <span class="json-v-masked">"*****"</span>,
+  <span class="json-k">"age"</span>:       <span class="json-v-general">"20–30"</span>,
+  <span class="json-k">"address"</span>:   <span class="json-v-general">"Vienna"</span>,
+  <span class="json-k">"diagnosis"</span>: <span class="json-v">"Migraine"</span>
+<span class="json-brace">&#125;</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Example -->
+    <section class="example-section" id="try-it">
+        <h2>Try It Yourself</h2>
+        <p>Edit the fields below, pick an anonymization technique for each, and watch the output
+            update in real time — all running locally in your browser.</p>
+
+        <div class="try-it-layout">
+            <!-- Input Side -->
+            <div class="try-it-card">
+                <div class="example-card-header input-header">
+                    <span class="card-icon">✏️</span> Your Data
+                </div>
+                <div class="try-it-card-body">
+                    <div class="try-it-row">
+                        <label class="try-it-label">Name</label>
+                        <input class="try-it-input" type="text" [(ngModel)]="inputName"
+                            (ngModelChange)="onAnonymize()" />
+                        <select class="try-it-select" [(ngModel)]="techName" (ngModelChange)="onAnonymize()">
+                            <option value="masking">Masking</option>
+                            <option value="unchanged">Unchanged</option>
+                        </select>
+                    </div>
+                    <div class="try-it-row">
+                        <label class="try-it-label">Age</label>
+                        <input class="try-it-input" type="number" [(ngModel)]="inputAge"
+                            (ngModelChange)="onAnonymize()" />
+                        <select class="try-it-select" [(ngModel)]="techAge" (ngModelChange)="onAnonymize()">
+                            <option value="masking">Masking</option>
+                            <option value="generalization">Generalization</option>
+                            <option value="randomization">Randomization</option>
+                            <option value="unchanged">Unchanged</option>
+                        </select>
+                    </div>
+                    <div class="try-it-row">
+                        <label class="try-it-label">Address</label>
+                        <input class="try-it-input" type="text" [(ngModel)]="inputAddress"
+                            (ngModelChange)="onAnonymize()" />
+                        <select class="try-it-select" [(ngModel)]="techAddress" (ngModelChange)="onAnonymize()">
+                            <option value="masking">Masking</option>
+                            <option value="generalization">Generalization</option>
+                            <option value="unchanged">Unchanged</option>
+                        </select>
+                    </div>
+                    <div class="try-it-row">
+                        <label class="try-it-label">Diagnosis</label>
+                        <input class="try-it-input" type="text" [(ngModel)]="inputDiagnosis" disabled />
+                        <span class="try-it-unchanged-hint">always unchanged</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="try-it-arrow">
+                <svg width="48" height="24" viewBox="0 0 48 24">
+                    <path d="M4 12h40m0 0l-8-8m8 8l-8 8" stroke="#9333ea" stroke-width="2.5" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <!-- Output Side -->
+            <div class="try-it-card" [class.animate-pulse]="outputAnimating">
+                <div class="example-card-header output-header">
+                    <span class="card-icon">🔒</span> Anonymized Output
+                </div>
+                <div class="try-it-card-body">
+                    <div class="try-it-output-row">
+                        <span class="json-key">"name"</span>:
+                        <span class="output-value" [class.redacted]="techName === 'masking'">
+                            "{{ outputName }}"
+                        </span>
+                        <span class="badge-tech sm" [ngClass]="'badge-' + techName">{{ techName }}</span>
+                    </div>
+                    <div class="try-it-output-row">
+                        <span class="json-key">"age"</span>:
+                        <span class="output-value">
+                            {{ outputAge }}
+                        </span>
+                        <span class="badge-tech sm" [ngClass]="'badge-' + techAge">{{ techAge }}</span>
+                    </div>
+                    <div class="try-it-output-row">
+                        <span class="json-key">"address"</span>:
+                        <span class="output-value" [class.redacted]="techAddress === 'masking'">
+                            "{{ outputAddress }}"
+                        </span>
+                        <span class="badge-tech sm" [ngClass]="'badge-' + techAddress">{{ techAddress }}</span>
+                    </div>
+                    <div class="try-it-output-row">
+                        <span class="json-key">"diagnosis"</span>:
+                        <span class="output-value">"{{ outputDiagnosis }}"</span>
+                        <span class="badge-tech sm badge-unchanged">unchanged</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="example-note">
+            The analyst can still study diagnosis trends across age groups and regions—but no individual patient
+            can be singled out, even if the dataset is cross-referenced with public records.
+        </p>
+    </section>
+
+    <!-- Designed for practical data sharing -->
+    <section class="section">
+        <h2>Designed for practical data sharing</h2>
+        <p>Use the Anonymiser when you need to share datasets but want to minimise exposure of personal or sensitive
+            attributes. It's especially useful when your payloads are
+            <b>structured</b> (JSON) or <b>semantically modelled</b> (JSON-LD).
+        </p>
+
+        <div class="grid3">
+            <div class="feature">
+                <h3>Reduce re-identification risk</h3>
+                <p>Transform direct identifiers and quasi-identifiers with configurable operators.</p>
+                <div class="tagrow">
+                    <span class="tag">mask</span>
+                    <span class="tag">generalise</span>
+                    <span class="tag">randomise</span>
+                </div>
+            </div>
+            <div class="feature">
+                <h3>Keep utility for analytics / ML</h3>
+                <p>Preserve structure and meaning where possible while removing sensitive detail.</p>
+                <div class="tagrow">
+                    <span class="tag">data utility</span>
+                    <span class="tag">structure preserved</span>
+                    <span class="tag">repeatable</span>
+                </div>
+            </div>
+            <div class="feature">
+                <h3>Fit into governance workflows</h3>
+                <p>Explicit configuration supports review, iteration, and documentation of transformations.</p>
+                <div class="tagrow">
+                    <span class="tag">policy-friendly</span>
+                    <span class="tag">auditable</span>
+                    <span class="tag">iterative</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use-cases (kept from current page — restyled dark) -->
+    <section class="section">
+        <h2>Who Is This For?</h2>
+        <p>Our anonymizer serves anyone who handles personal data and needs to share, analyse, or publish it safely.</p>
+
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <span class="use-case-icon">🏥</span>
+                <h4>Healthcare</h4>
+                <p>Share patient outcome data with external researchers without exposing individual identities.</p>
+            </div>
+            <div class="use-case-card">
+                <span class="use-case-icon">🔬</span>
+                <h4>Research</h4>
+                <p>Publish datasets that meet ethics board requirements and open-data mandates.</p>
+            </div>
+            <div class="use-case-card">
+                <span class="use-case-icon">🏦</span>
+                <h4>Finance</h4>
+                <p>Process transaction records for fraud analysis without exposing customer PII.</p>
+            </div>
+            <div class="use-case-card">
+                <span class="use-case-icon">🔐</span>
+                <h4>Your Use Case</h4>
+                <p>Any domain that handles personal data can benefit—education, logistics, government, IoT, and beyond.
+                    If you collect it, you can anonymize it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section anchor" id="how">
+        <h2>How it works</h2>
+        <p>The service follows a <b>configuration-driven</b> approach: you define how each attribute should be treated
+            (based on datatype and your data model). The anonymisation pipeline then applies the selected operators
+            consistently.</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="n">1</div>
+                <h3>Provide sample data</h3>
+                <p>Start with non-sensitive test data in JSON or JSON-LD.</p>
+            </div>
+            <div class="step">
+                <div class="n">2</div>
+                <h3>Select / provide configuration</h3>
+                <p>Define attribute types and allowed transformations (e.g., for identifiers vs. measures).</p>
+            </div>
+            <div class="step">
+                <div class="n">3</div>
+                <h3>Run anonymisation</h3>
+                <p>The pipeline applies masking/generalisation/randomisation according to your config.</p>
+            </div>
+            <div class="step">
+                <div class="n">4</div>
+                <h3>Review output</h3>
+                <p>Check privacy and utility, then iterate on configuration and operators.</p>
+            </div>
+        </div>
+
+        <div class="final-cta" style="margin-top: 24px;">
+            <div>
+                <h3>Try it in 2 minutes</h3>
+                <p>Open the app, paste the sample JSON, anonymise it, and tell us what's missing (operators, defaults,
+                    UX, validation, risk hints, JSON-LD handling, export formats).</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="/">
+                    Start anonymising →
+                </a>
+                <a class="btn" href="https://github.com/OwnYourData/anonymisation-service/issues" target="_blank"
+                    rel="noopener">Browse issues</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section anchor" id="faq">
+        <h2>FAQ</h2>
+        <div class="faq">
+            <details>
+                <summary>Is the output truly "anonymous"?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    It depends on your data and configuration. The tool applies the transformations you choose, but
+                    true anonymity also depends on context, dataset size, and external data availability.
+                    Always review output critically and consider using a
+                    <a href="https://github.com/OwnYourData/anonymisation-service/issues/new/choose" target="_blank"
+                        rel="noopener">new issue template</a>
+                    to report edge cases.
+                </div>
+            </details>
+            <details>
+                <summary>What formats are supported?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    JSON and JSON-LD. The pipeline preserves your document structure while transforming the values
+                    you specify. Support for additional formats is on the roadmap.
+                </div>
+            </details>
+            <details>
+                <summary>How do I provide good feedback?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    A short, concrete repro — your sample input, the configuration you used, and what you expected
+                    vs. what you got — is the most helpful. Open an issue on
+                    <a href="https://github.com/OwnYourData/anonymisation-service" target="_blank"
+                        rel="noopener">github.com/OwnYourData/anonymisation-service</a>.
+                </div>
+            </details>
+            <details>
+                <summary>Can I run this in my own environment?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    Yes. The project is open source. Clone the repo and follow the setup instructions in the README.
+                    You can host the service wherever you need it.
+                </div>
+            </details>
+            <details>
+                <summary>What data should I avoid uploading?
+                    <span class="chevron">▸</span>
+                </summary>
+                <div class="ans">
+                    Never upload real personal data during testing. Always use synthetic or non-sensitive samples.
+                    Effective anonymisation is context-dependent; treat output as <em>risk-reduced</em> rather than
+                    "guaranteed anonymous."
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section">
+        <div class="final-cta">
+            <div>
+                <h3>Help us improve the Anonymiser</h3>
+                <p>Your real-world feedback guides what we build next. If you try one dataset + configuration and report
+                    what worked (or broke), you'll directly influence the roadmap.</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="/">
+                    Try it now →
+                </a>
+                <a class="btn" href="https://github.com/OwnYourData/anonymisation-service/issues/new/choose"
+                    target="_blank" rel="noopener">Send feedback</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="hr"></div>
+        <div class="footgrid">
+            <div>
+                <p><b>OwnYourData</b> — Privacy-preserving data transformation</p>
+                <p>Disclaimer: This page provides product information and is not legal advice. Use synthetic data for
+                    testing and treat anonymisation as a risk-management process.</p>
+            </div>
+            <div>
+                <p><b>Links</b></p>
+                <div class="footlinks">
+                    <a href="/" rel="noopener">Open app</a>
+                    <a href="https://github.com/OwnYourData/anonymisation-service" target="_blank"
+                        rel="noopener">GitHub</a>
+                    <a href="https://github.com/OwnYourData/anonymisation-service/issues" target="_blank"
+                        rel="noopener">Issues</a>
+                    <a href="https://github.com/OwnYourData/anonymisation-service/issues/new/choose" target="_blank"
+                        rel="noopener">New feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>

@@ -1,0 +1,37 @@
+/* ───── Footer ───── */
+.landing-footer {
+    padding: 26px 0 40px;
+    color: var(--muted2);
+    font-size: 12px;
+}
+
+.hr {
+    height: 1px;
+    background: rgba(255, 255, 255, .10);
+    margin: 16px 0;
+}
+
+.footgrid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.footlinks a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-right: 12px;
+    display: inline-block;
+    padding: 6px 0;
+}
+
+.footlinks a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+/* Anchor scrolling offset */
+.anchor {
+    scroll-margin-top: 90px;
+}

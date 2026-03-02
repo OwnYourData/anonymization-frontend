@@ -97,6 +97,10 @@ export class LandingComponent implements OnInit, OnDestroy {
         setTimeout(() => this.outputAnimating = false, 600);
     }
 
+    scrollTo(id: string): void {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
     // ── Helpers ──
 
     private extractState(address: string): string {
